@@ -18,6 +18,14 @@ app.get("/api/genres", (req, res) => {
   res.send(genres);
 });
 
+// View a Specific Genre
+app.get("/api/genres/:id", (req, res) => {
+  const genre = genres.find(g => g.id === parseInt(req.params.id));
+  if (!genre) return res.status(404).send("That genre was not found");
+
+  res.send(genre);
+});
+
 // Add New Genre Route
 app.post("/api/genres", (req, res) => {
   const { error } = validateGenre(req.body);
