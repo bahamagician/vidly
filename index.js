@@ -1,5 +1,12 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const genres = require("./routes/genres");
+
+// Connect to mongo
+mongoose
+  .connect("mongodb://localhost/vidly")
+  .then(() => console.log("Connected to Mongodb..."))
+  .catch(err => console.error("Could not connect to Mongo...", err));
 
 const app = express();
 
