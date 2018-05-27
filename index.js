@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const genres = require("./routes/genres");
+const customers = require("./routes/customers");
 
 // Connect to mongo
 mongoose
@@ -13,6 +14,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/genres", genres);
+app.use("/api/customers", customers);
 
 // Set port from env variable or default ot 3000
 const port = process.env.PORT || 4000;
